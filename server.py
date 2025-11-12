@@ -63,25 +63,12 @@ class ResumeHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         """Handle GET requests."""
         path = urlparse(self.path).path
-        query_params = dict(item.split('=') for item in urlparse(self.path).query.split('&') if '=' in item) if urlparse(self.path).query else {}
+        resume = load_resume()
         
-        # Health check - no auth required
+        # Health check
         if path == '/health':
             self._json_response({"status": "ok", "message": "Resume server running"})
             return
-        
-        # Check auth: Bearer token OR query param token for browser access
-        token_valid = False
-        if self._check_auth():
-            token_valid = True
-        elif query_params.get('token') == AUTH_TOKEN:
-            token_valid = True
-        
-        if path != '/health' and not token_valid:
-            self._send_unauthorized()
-            return
-        
-        resume = load_resume()
         
         # HTML interface (protected)
         if path == '/':
@@ -212,11 +199,6 @@ class ResumeHandler(BaseHTTPRequestHandler):
         
         # MCP endpoint - handle JSON-RPC requests
         if path == '/mcp':
-            # Check auth for MCP endpoint
-            if not self._check_auth():
-                self._send_unauthorized()
-                return
-            
             try:
                 content_length = int(self.headers.get('Content-Length', 0))
                 body = self.rfile.read(content_length).decode('utf-8')
