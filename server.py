@@ -171,6 +171,144 @@ class ResumeHandler(BaseHTTPRequestHandler):
         # 404 for everything else
         self.send_error(404, f"Path {path} not found")
     
+    def do_POST(self):
+        """Handle POST requests (for MCP JSON-RPC protocol)."""
+        path = urlparse(self.path).path
+        
+        # MCP endpoint - handle JSON-RPC requests
+        if path == '/mcp':
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                body = self.rfile.read(content_length).decode('utf-8')
+                request_data = json.loads(body)
+                
+                method = request_data.get('method')
+                request_id = request_data.get('id')
+                
+                # Handle initialize request
+                if method == 'initialize':
+                    response = {
+                        "jsonrpc": "2.0",
+                        "id": request_id,
+                        "result": {
+                            "protocolVersion": "2024-11-05",
+                            "capabilities": {
+                                "tools": {},
+                                "resources": {}
+                            },
+                            "serverInfo": {
+                                "name": "anix-resume-mcp",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                    self._json_response(response)
+                    return
+                
+                # Handle tools/list request
+                elif method == 'tools/list':
+                    response = {
+                        "jsonrpc": "2.0",
+                        "id": request_id,
+                        "result": {
+                            "tools": [
+                                {
+                                    "name": "get_resume",
+                                    "description": "Get full resume data",
+                                    "inputSchema": {
+                                        "type": "object",
+                                        "properties": {}
+                                    }
+                                },
+                                {
+                                    "name": "get_skills",
+                                    "description": "Get skills list",
+                                    "inputSchema": {
+                                        "type": "object",
+                                        "properties": {}
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                    self._json_response(response)
+                    return
+                
+                # Handle tools/call request
+                elif method == 'tools/call':
+                    params = request_data.get('params', {})
+                    tool_name = params.get('name')
+                    
+                    resume = load_resume()
+                    
+                    if tool_name == 'get_resume':
+                        response = {
+                            "jsonrpc": "2.0",
+                            "id": request_id,
+                            "result": {
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": json.dumps(resume, indent=2)
+                                    }
+                                ]
+                            }
+                        }
+                    elif tool_name == 'get_skills':
+                        skills = resume.get('skills', {})
+                        response = {
+                            "jsonrpc": "2.0",
+                            "id": request_id,
+                            "result": {
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": json.dumps({"skills": skills}, indent=2)
+                                    }
+                                ]
+                            }
+                        }
+                    else:
+                        response = {
+                            "jsonrpc": "2.0",
+                            "id": request_id,
+                            "error": {
+                                "code": -32601,
+                                "message": f"Unknown tool: {tool_name}"
+                            }
+                        }
+                    
+                    self._json_response(response)
+                    return
+                
+                # Unknown method
+                else:
+                    response = {
+                        "jsonrpc": "2.0",
+                        "id": request_id,
+                        "error": {
+                            "code": -32601,
+                            "message": f"Method not found: {method}"
+                        }
+                    }
+                    self._json_response(response)
+                    return
+                    
+            except Exception as e:
+                error_response = {
+                    "jsonrpc": "2.0",
+                    "id": request_data.get('id') if 'request_data' in locals() else None,
+                    "error": {
+                        "code": -32603,
+                        "message": f"Internal error: {str(e)}"
+                    }
+                }
+                self._json_response(error_response)
+                return
+        
+        # 404 for other POST endpoints
+        self.send_error(404, f"POST not supported for {path}")
+    
     def _json_response(self, data):
         """Send JSON response."""
         self.send_response(200)
