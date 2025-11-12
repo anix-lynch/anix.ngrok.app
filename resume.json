@@ -1,175 +1,338 @@
 {
-  "name": "anixlynch",
+  "name": "Anix Lynch",
   "title": "Data Engineer | ML Engineer | Business Analyst",
-  "location": "Los Angeles, CA (Remote)",
+  "location": "Los Angeles, CA",
+  "phone": "253-366-4256",
   "email": "alynch@gozeroshot.dev",
-  "years_experience": 5,
-  "summary": "Data engineer and ML practitioner specializing in building scalable data pipelines, ETL systems, and AI-powered applications. Experienced with modern data stack (Snowflake, dbt, DuckDB) and ML frameworks (LangChain, RAG, HuggingFace). Currently building 6 Northstar projects demonstrating end-to-end data engineering and ML capabilities.",
+  "linkedin": "linkedin.com/in/anix-lynch",
+  "github": "github.com/anix-lynch",
+  "portfolio": "gozeroshot.dev",
   
-  "skills": {
-    "Python": 9,
-    "SQL": 9,
-    "JavaScript": 7,
-    "TypeScript": 7,
-    "Snowflake": 8,
-    "DuckDB": 8,
-    "BigQuery": 7,
-    "dbt": 8,
-    "Airflow": 7,
-    "FastAPI": 8,
-    "Flask": 7,
-    "Streamlit": 8,
-    "AWS": 7,
-    "GCP": 7,
-    "Docker": 7,
-    "Git": 9,
-    "Pandas": 9,
-    "NumPy": 8,
-    "LangChain": 8,
-    "RAG": 8,
-    "OpenAI": 8,
-    "HuggingFace": 7,
-    "MCP": 9,
-    "ngrok": 8,
-    "Qdrant": 7,
-    "Supabase": 6
+  "languages": {
+    "English": "Fluent",
+    "Japanese": "Native/Fluent (JLPT N1)",
+    "Thai": "Fluent"
   },
   
-  "projects": [
-    {
-      "name": "Resume MCP",
-      "description": "AI-powered resume matching system using Model Context Protocol. Connects resume data to ChatGPT and other AI tools via ngrok.",
-      "tech": ["Python", "FastAPI", "MCP", "OpenAI", "ngrok", "JSON-RPC"],
-      "github": "https://github.com/anix-lynch/resume-mcp",
-      "live_url": "https://anix.ngrok.app",
-      "highlights": [
-        "Built MCP server with JSON-RPC protocol for ChatGPT integration",
-        "Zero-dependency HTTP server using pure Python stdlib",
-        "Real-time resume data access via public API"
-      ]
-    },
-    {
-      "name": "5 Miles Job Search",
-      "description": "Location-based job search with commute calculation using Google Maps API. Visualizes jobs and VC firms on interactive map.",
-      "tech": ["Python", "DuckDB", "Snowflake", "Streamlit", "Google Maps API", "Folium"],
-      "github": "https://github.com/anix-lynch/5miles-job-search",
-      "highlights": [
-        "Built ETL pipeline validating and enriching job data",
-        "Integrated DuckDB (local) and Snowflake (cloud) sync",
-        "Real-time commute scoring with transit API"
-      ]
-    },
-    {
-      "name": "Mocktailverse (AWS)",
-      "description": "Data pipeline for mocktail recipes using AWS free tier services.",
-      "tech": ["Python", "AWS S3", "Airflow", "Pandas"],
-      "highlights": [
-        "Self-hosted Airflow orchestration",
-        "S3 object storage (5GB free tier)",
-        "Automated data ingestion pipeline"
-      ]
-    },
-    {
-      "name": "Cocktailverse (GCP)",
-      "description": "Cocktail recipe analytics using GCP free tier services.",
-      "tech": ["Python", "BigQuery", "GCS", "dbt"],
-      "highlights": [
-        "BigQuery analytics (1TB/month free)",
-        "dbt transformations for data modeling",
-        "GCS storage integration"
-      ]
-    },
-    {
-      "name": "Dynamic Resume Agent",
-      "description": "LangChain-powered RAG system for intelligent resume Q&A.",
-      "tech": ["Python", "LangChain", "Qdrant", "OpenAI", "RAG"],
-      "highlights": [
-        "Vector database for semantic search",
-        "RAG pipeline for context-aware responses",
-        "Real-time resume insights"
-      ]
-    },
-    {
-      "name": "Marketing Analytics ETL",
-      "description": "End-to-end marketing data pipeline with ML predictions.",
-      "tech": ["Python", "DuckDB", "dbt", "Streamlit", "Vertex AI"],
-      "highlights": [
-        "dbt models for data transformation",
-        "DuckDB for local analytics",
-        "Vertex AI for ML predictions"
-      ]
-    }
-  ],
-  
-  "experience": [
-    {
-      "role": "Independent Data Engineer",
-      "company": "ZeroShot Brand (Northstar Projects)",
-      "duration": "2024-Present",
-      "location": "Remote",
-      "highlights": [
-        "Built 6 production-ready data engineering projects (Northstar suite)",
-        "Integrated multiple data stacks: AWS, GCP, Snowflake, DuckDB",
-        "Developed MCP servers for AI tool integration",
-        "Created end-to-end ETL pipelines with validation and enrichment",
-        "Deployed interactive dashboards with Streamlit",
-        "Implemented RAG systems with LangChain and vector databases"
-      ]
-    },
-    {
-      "role": "Data Analyst / Business Analyst",
-      "company": "Previous Experience",
-      "duration": "2019-2024",
-      "location": "Various",
-      "highlights": [
-        "Financial analysis and reporting",
-        "Business intelligence and insights",
-        "SQL data analysis and visualization",
-        "Cross-functional stakeholder management"
-      ]
-    }
-  ],
+  "summary": {
+    "japanese_first": "Trilingual (Japanese/English/Thai) business executive with MBA from Chicago Booth and 20+ years of experience spanning venture capital, finance, and data-driven operations. Native-level Japanese (JLPT N1) with 16 years living/working in Japan. Currently building AI/ML portfolio (ZeroShot.dev) while seeking remote US opportunities leveraging bilingual expertise. Track record managing $2B+ in PE/VC deals, leading cross-border teams, and driving strategic initiatives across Asia-Pacific markets.",
+    
+    "business_first": "MBA-educated investment professional with 20+ years of experience managing $2B+ in PE/VC transactions and leading strategic initiatives across Asia-Pacific markets. Former Managing Partner at Expara (SEA early-stage VC) and VP at MQDC ($1.5B+ real estate portfolio). Recognized as 'Top Female VC in Thailand' and guest lecturer at Chicago Booth MBA. Proven track record in fund formation, deal sourcing, portfolio management, and ecosystem building. Currently transitioning into data-driven roles, building AI/ML engineering portfolio (ZeroShot.dev).",
+    
+    "tech_first": "Data and AI engineering professional with MBA from Chicago Booth, building production-ready AI/ML systems through ZeroShot.dev portfolio (5 interoperable projects: Resume MCP, AWS/GCP pipelines, LangChain agents). 20+ years of business experience providing deep domain expertise in finance, real estate, and venture capital. Tech stack: Python, SQL, TensorFlow, PyTorch, LangChain, dbt, Airflow, AWS, GCP, Docker. Seeking to leverage unique combination of technical skills and business acumen in data analyst, ML engineer, or AI engineering roles."
+  },
   
   "education": [
     {
-      "degree": "Data Engineering & ML Self-Study",
-      "institution": "Self-Taught (Project-Based Learning)",
-      "year": "2023-2024",
-      "focus": ["Data Engineering", "ML Engineering", "Cloud Architecture", "API Development"]
+      "degree": "MBA, Finance",
+      "institution": "University of Chicago Booth School of Business",
+      "locations": "London | Chicago | Singapore",
+      "year": "2010-2012"
+    },
+    {
+      "degree": "BA, International Business",
+      "institution": "Ritsumeikan University",
+      "location": "Kyoto, Japan",
+      "year": 2001
     }
   ],
   
   "certifications": [
-    "Building with MCP (Model Context Protocol)",
-    "Google Maps Platform APIs",
-    "Snowflake Data Warehousing"
+    "Certified Scrum Master (Scrum Alliance)",
+    "Financial Modeling (Investment Banking Institute)",
+    "Meta Data Analyst Professional Certificate (Credly verified)",
+    "Google Data Analytics Certificate",
+    "IBM AI Engineering (14+ Coursera courses)",
+    "JLPT N1 (Japanese Language Proficiency)",
+    "TOEIC 930 (English)"
   ],
   
-  "languages": {
-    "English": "Native",
-    "Japanese": "Professional Working Proficiency"
+  "skills": {
+    "programming": {
+      "Python": 9,
+      "SQL": 9,
+      "JavaScript": 7,
+      "TypeScript": 6
+    },
+    "ml_ai": {
+      "TensorFlow": 8,
+      "PyTorch": 8,
+      "LangChain": 8,
+      "RAG": 8,
+      "HuggingFace": 7,
+      "MLflow": 7,
+      "OpenAI": 8,
+      "Anthropic": 7
+    },
+    "cloud_devops": {
+      "AWS": 8,
+      "GCP": 8,
+      "Docker": 7,
+      "Git": 9,
+      "GitHub_Actions": 7,
+      "CI_CD": 7
+    },
+    "data_engineering": {
+      "dbt": 8,
+      "Airflow": 7,
+      "Apache_Beam": 6,
+      "PySpark": 6,
+      "DuckDB": 8,
+      "BigQuery": 7,
+      "PostgreSQL": 7
+    },
+    "bi_visualization": {
+      "Streamlit": 8,
+      "Plotly": 7,
+      "Tableau": 6,
+      "Power_BI": 6,
+      "Excel": 9
+    },
+    "business_finance": {
+      "Financial_Modeling": 9,
+      "Valuation": 9,
+      "Due_Diligence": 9,
+      "Portfolio_Management": 9,
+      "FP_A": 8,
+      "Cap_Table_Structuring": 9,
+      "Venture_Capital": 9,
+      "Private_Equity": 8,
+      "Real_Estate_Finance": 8
+    },
+    "soft_skills": {
+      "Public_Speaking": 9,
+      "Cross_Cultural_Leadership": 9,
+      "Stakeholder_Management": 9,
+      "Project_Management": 8,
+      "Mentoring": 8,
+      "Negotiation": 9
+    }
+  },
+  
+  "experience": [
+    {
+      "role": "Independent AI/ML Engineer",
+      "company": "ZeroShot.dev - Personal AI Data Engineering Suite",
+      "location": "Los Angeles, CA (Remote)",
+      "duration": "2024-Present",
+      "type": "tech",
+      "description": "Building 5 production-ready interoperable AI/ML systems (30% complete)",
+      "highlights": [
+        "Resume MCP: Built AI job-matching API using TensorFlow, PyTorch, HuggingFace. Embedded 1,000+ job postings with MLflow experiment tracking. Deployed on AWS SageMaker/GCP Vertex AI + Flask API via ngrok.",
+        "Mocktailverse (AWS): Architected serverless ETL pipeline with Airflow, dbt, Glue, Lambda. Orchestrated S3 → Glue/Lambda → DynamoDB → dbt modeling.",
+        "Cocktailverse (GCP): Built scalable pipeline with Apache Beam, Dataflow, BigQuery. GCS → Cloud Functions → Dataflow → BigQuery transformations.",
+        "Dynamic Resume Agent: Created RAG-powered agent with LangChain consuming Resume MCP API. Streamlit dashboard for job-match visualization.",
+        "Marketing Analytics: Full-stack ETL with dbt, Airflow, DuckDB, Vertex AI predictive modeling. Streamlit dashboard with Plotly for KPI visualization.",
+        "DevOps: Docker, Git, GitHub Actions, CI/CD automation across all projects. Total cost: <$50 (AWS free tier + GCP $300 credits)."
+      ],
+      "tech": ["Python", "TensorFlow", "PyTorch", "LangChain", "AWS", "GCP", "dbt", "Airflow", "Docker", "Streamlit"]
+    },
+    {
+      "role": "Managing Partner",
+      "company": "Expara - SEA Early-Stage Venture Capital",
+      "location": "Bangkok, Thailand",
+      "duration": "May 2017 - May 2024",
+      "type": "vc_finance",
+      "description": "Led sovereign wealth VC fund backed by Government Savings Bank, managing $20M+ AUM",
+      "highlights": [
+        "Fund Operations: Managed end-to-end deal flow, sourced 700+ deals/year, closed $5M+ investments. Lead investor/board director: Ooca, Event Banana, Peak Engine, One Stockhome.",
+        "Portfolio: Fintech, DeepTech, AI, HealthTech, Blockchain, EdTech, PropTech. Exits: 2C2P (acquired), Co-asset (acquired).",
+        "Team Leadership: Managed 3 FT associates, 6 vendors, 8 accelerator partnerships, 40+ VC network.",
+        "Strategic Initiatives: Created 'Techsauce FAB' (Food/Agri/Biotech) flagship program, grew audience 10K→15K. Built community of 500+ startups in future-tech sectors.",
+        "Fund Formation: Structured fund with Government Savings Bank and Stock Exchange of Thailand. Developed screening criteria, cap table structures, waterfall analysis, portfolio construction.",
+        "Public Profile: Named 'Top Female VC in Thailand'. Guest lecturer: Chicago Booth MBA, Sasin MBA. 20+ keynote speeches. TV commentator: LINE TV 'Startup Star 4.0', True Television."
+      ],
+      "achievements": [
+        "Managed $2B+ in PE/VC transactions over 20 years",
+        "Sourced 700+ deals annually",
+        "Average portfolio IRR: 25%+, equity multiple: 2x",
+        "Built 500+ startup community"
+      ]
+    },
+    {
+      "role": "CEO",
+      "company": "GLOBA - Innovative Policy Consulting",
+      "location": "San Francisco, CA / Bangkok, Thailand",
+      "duration": "Dec 2015 - May 2017",
+      "type": "strategy",
+      "description": "Spearheaded Thailand's national innovation strategy (Thailand 4.0)",
+      "highlights": [
+        "Policy Development: Initiated 'Bangkok Beta' plan (2014), adopted as national 'Thailand 4.0' strategy. Synthesized comprehensive policy framework for Ministry of ICT, Ministry of Science.",
+        "Budget Planning: Estimated $395M budget to produce 1-5 tech unicorns in 8 years.",
+        "Research: Conducted 26 Silicon Valley research trips: Google, Facebook, Uber, Airbnb, Khosla, 500 Startups.",
+        "Impact Delivered (2015-2018): 17 of 26 policy recommendations implemented within 3 years. 'One Stop Shop' & 'Smart Visa' approved by BOI. VC/startup tax waivers introduced for first time.",
+        "Economic Impact: Government allocated $560M to support 10,000 startups ($160M over initial proposal). Thailand's 'Ease of Doing Business' improved 3 points (World Bank ranking).",
+        "Recognition: Recognized by True Corporation as 'Tech Ecosystem Alliance' at True Digital Park launch."
+      ],
+      "achievements": [
+        "Secured $560M government funding for startup ecosystem",
+        "17 of 26 policy recommendations implemented",
+        "Predicted Thai new economy trends 2015-2020 with 90%+ accuracy"
+      ]
+    },
+    {
+      "role": "VP Business Intelligence",
+      "company": "MQDC (Magnolia Quality Development Corp)",
+      "location": "Bangkok, Thailand",
+      "duration": "Dec 2013 - Jun 2015",
+      "type": "real_estate",
+      "description": "Private real estate fund of Chearavanont family (Forbes #1 wealthiest in SEA, CP Group owner)",
+      "highlights": [
+        "Deal Origination: Originated 'True Digital Park' concept - $568M joint venture (MQDC/True), 10,000 sqm. Successfully launched 2018, now Thailand's largest tech hub.",
+        "Major Projects: Whizdom101: $1.5B mixed-use development with Virgin Group (80%+ sold, 50%+ leased). Pingu Shanghai: $162M, 246-bed aging hub feasibility with Fortress Investment Group.",
+        "Financial Analysis: Conducted feasibility analysis for deals averaging $500M. Cap table structuring, waterfall modeling, IRR projections.",
+        "Innovation Investment: Identified tech investment opportunities: AgTech, PropTech, smart home, robotics. Analyzed Hampton Creek investment (alternative protein, backed by Bill Gates).",
+        "Strategic JVs: Initiated JV with CP Group Sky Urban Solution Singapore."
+      ],
+      "achievements": [
+        "Originated $568M True Digital Park (Thailand's largest tech hub)",
+        "Structured $1.5B Whizdom101 development (80% sold)",
+        "Average deal size: $500M"
+      ]
+    },
+    {
+      "role": "General Manager",
+      "company": "DT Family Foundation",
+      "location": "Hong Kong",
+      "duration": "Dec 2012 - Dec 2013",
+      "type": "impact",
+      "description": "Led UBS to launch impact-first philanthropic trust backed by Hong Kong billionaire family",
+      "highlights": [
+        "Foundation Launch: Structured foundation to invest 2% of family revenue in sustainability initiatives. Now supporting 400+ schools, social entrepreneurs, disaster relief globally.",
+        "Strategic Planning: Led 40-year vision planning, deal structuring, global partnership development. Identified direct tech investments for CP Group/MQDC/True portfolio.",
+        "Focus Areas: Future of food, automated agriculture, vertical farming, PropTech.",
+        "Impact Measurement: Designed KPIs and metrics for social impact tracking. Built portfolio monitoring dashboards for foundation board."
+      ],
+      "achievements": [
+        "Built foundation supporting 400+ schools/entrepreneurs",
+        "CEO recognized as 'Forbes Asia's Philanthropist'"
+      ]
+    },
+    {
+      "role": "Asset Manager",
+      "company": "Capital Realty LLC",
+      "location": "Tokyo, Japan",
+      "duration": "Aug 2009 - Feb 2011",
+      "type": "real_estate",
+      "highlights": [
+        "Directed redevelopment of Avenue Shopping Mall (75 tenants) in Kobe, Japan",
+        "Day-to-day liaison with InterContinental Hotels, supervised 18 property managers",
+        "Negotiated $130M loan facility with Mizuho Bank on behalf of TCC Group",
+        "Designed foot traffic improvement plans, analyzed seasonal rent and tenant mix"
+      ]
+    },
+    {
+      "role": "Investment Associate",
+      "company": "MGPA BlackRock",
+      "location": "Tokyo, Japan",
+      "duration": "Apr 2008 - Jun 2009",
+      "type": "real_estate",
+      "highlights": [
+        "Conducted acquisition analysis for $251M in real estate transactions",
+        "Avg. IRR 25%+, equity multiple 2x across portfolio",
+        "Projects: Storia Shinagawa ($99.7M, 202 units), Shirokanedai ($116M), Kameido ($35M)",
+        "Prepared quarterly reports, board presentations, IC meeting materials"
+      ],
+      "achievements": [
+        "$251M in transactions",
+        "Average IRR: 25%+",
+        "Equity multiple: 2x"
+      ]
+    },
+    {
+      "role": "CEO Office Manager",
+      "company": "New City Corporation",
+      "location": "Tokyo, Japan",
+      "duration": "Oct 2006 - Apr 2008",
+      "type": "real_estate",
+      "description": "Japan's first residential REIT formed by CBRE Global Investor",
+      "highlights": [
+        "Planned/executed marketing for $1B opportunistic real estate fund",
+        "FP&A analysis of $700M+ residential fund, average IRR +22%",
+        "Proposed e-approval process saving $500K annually"
+      ],
+      "achievements": [
+        "$1B fund marketing",
+        "$700M+ portfolio analysis",
+        "$500K annual savings from process improvement"
+      ]
+    },
+    {
+      "role": "Strategic Planning",
+      "company": "Apple International Company Ltd",
+      "location": "Mie, Japan",
+      "duration": "Apr 2001 - Sep 2006",
+      "type": "early_career",
+      "description": "Japan-HK based listed car dealership (Tokyo Stock Exchange, TSE: 2788)",
+      "highlights": [
+        "IPO: Prepared Japanese prospectus and private offering memorandum for IPO. Published quarterly IR reports post-listing.",
+        "M&A: Assisted Credit Suisse in due diligence for acquisition of 8 dealers (2 Thai, 6 Chinese). Led post-M&A integration and financial consolidation.",
+        "JV: Led JV with Thanachart Scotia Bank to build Thailand's first car auction. 'Apple Auto-Auction': 58,000 sqm facility, 60,000 cars/month. Achieved 2nd largest market share within 4 years.",
+        "Team Leadership: Led 14-person accounting team (HK, China, Indonesia) for consolidated 10-K/10-Q."
+      ],
+      "achievements": [
+        "Led IPO process",
+        "Built 2nd largest car auction in Thailand",
+        "60,000 cars/month facility"
+      ]
+    }
+  ],
+  
+  "quantifiable_achievements": {
+    "investment_finance": [
+      "Managed $2B+ in PE/VC transactions (20 years)",
+      "Led $20M+ sovereign wealth VC fund",
+      "Closed $5M+ in direct investments",
+      "Average portfolio IRR: 25%+, equity multiple: 2x",
+      "Sourced 700+ deals annually"
+    ],
+    "strategic_impact": [
+      "Created national innovation policy adopted by Thai government",
+      "Secured $560M government funding for startup ecosystem",
+      "Originated $568M True Digital Park (Thailand's largest tech hub)",
+      "Structured $1.5B Whizdom101 development (80% sold)",
+      "Built foundation supporting 400+ schools/entrepreneurs"
+    ],
+    "operational_excellence": [
+      "Managed teams up to 40 members across 5 countries",
+      "Supervised 18 property managers, $130M loan negotiations",
+      "Achieved 2nd market share in Thai car auction (Year 4)",
+      "Saved $500K annually through process automation",
+      "98% data accuracy across all projects"
+    ],
+    "public_recognition": [
+      "Named 'Top Female VC in Thailand'",
+      "Guest lecturer: Chicago Booth MBA, Sasin MBA",
+      "Forbes recognition (policy impact, philanthropy)",
+      "TV appearances: LINE TV, True Television",
+      "20+ keynote speeches at international conferences"
+    ]
   },
   
   "target_roles": {
-    "primary": [
-      "Data Engineer",
-      "ML Engineer", 
-      "Senior Data Analyst",
-      "Data Platform Engineer",
-      "Business Intelligence Engineer",
-      "Analytics Engineer"
-    ],
-    "secondary": [
-      "Business Analyst",
-      "Finance Analyst",
-      "Investment Analyst",
-      "Product Analyst"
-    ],
-    "japanese_roles": [
+    "japanese_domain": [
       "Japanese Customer Service/Support",
       "Japanese Business Analyst",
       "Japanese Technical Support",
+      "Japanese Tech/Data Analyst",
       "Japanese-English Technical Translator"
+    ],
+    "business_domain": [
+      "Business Analyst",
+      "Finance Analyst",
+      "Investment Analyst",
+      "VC/PE Analyst",
+      "Real Estate Analyst",
+      "Product Analyst"
+    ],
+    "tech_domain": [
+      "Data Analyst",
+      "Data Engineer",
+      "ML Engineer",
+      "AI Engineer",
+      "Analytics Engineer",
+      "Data Platform Engineer",
+      "Business Intelligence Engineer"
     ]
   },
   
@@ -177,6 +340,18 @@
     "work_type": ["Remote", "Hybrid"],
     "location": "Los Angeles area (within 1 hour commute)",
     "company_size": ["Startup", "Scale-up", "Mid-size"],
-    "industries": ["Tech", "Finance", "VC/PE", "Data", "AI/ML"]
+    "industries": ["Tech", "Finance", "VC/PE", "Data", "AI/ML", "Real Estate"]
+  },
+  
+  "keywords": {
+    "japanese": ["Bilingual", "Japanese", "JLPT", "Translation", "Localization", "Cross-cultural", "Business Japanese", "Fluent", "Native"],
+    "business_finance": ["MBA", "Financial Analysis", "Business Analysis", "Investment", "Due Diligence", "Financial Modeling", "Valuation", "Strategy", "Private Equity", "Venture Capital", "Portfolio Management", "Stakeholder Management", "M&A", "Real Estate", "FP&A"],
+    "tech_data": ["Python", "SQL", "Data Analysis", "Machine Learning", "AWS", "GCP", "ETL", "Pipeline", "TensorFlow", "PyTorch", "LangChain", "API", "Cloud", "Docker", "Git", "Airflow", "dbt", "BigQuery", "Tableau", "Streamlit", "Pandas", "NumPy", "MLflow", "CI/CD"]
+  },
+  
+  "career_narrative": {
+    "gap_explanation": "After 20 years in finance and venture capital, I recognized AI was transforming every industry. Rather than becoming obsolete, I chose to become AI-proof. I spent 2019-2024 transitioning from investment professional to AI engineer, building production-ready systems through ZeroShot.dev. Now I'm seeking to combine my deep business expertise with my new technical skills - offering both the domain knowledge of a 20-year veteran AND the technical capabilities of a modern data/AI engineer. This unique combination is rare and valuable.",
+    
+    "unique_value_proposition": "Unique combination of 20+ years business/finance expertise + modern AI/ML engineering skills + trilingual capabilities (EN/JP/TH) + MBA from Chicago Booth. Can bridge technical and business stakeholders, understand both code and cap tables, and operate across cultures."
   }
 }
