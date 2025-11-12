@@ -39,8 +39,9 @@ https://anix.ngrok.app/mcp
 
 #### **Authentication:**
 ```
-OAuth
+None
 ```
+*(Select "None" from the dropdown - this is a public API)*
 
 #### **Accept Risk:**
 - ☑️ Check: "I understand and want to continue"
@@ -146,8 +147,8 @@ cd /Users/anixlynch/dev/anix.ngrok.app
 
 ### Authentication Issues?
 
-- Make sure you selected **"OAuth"** (not "API Key")
-- This server doesn't require authentication
+- Make sure you selected **"None"** (not "OAuth" or "API Key")
+- This is a public API with no authentication required
 - Accept the risk warning (it's your own server!)
 
 ---
@@ -184,7 +185,7 @@ To update the data ChatGPT sees:
 ```
 ✅ Server:   https://anix.ngrok.app
 ✅ MCP URL:  https://anix.ngrok.app/mcp
-✅ Auth:     None (OAuth selected, but no token needed)
+✅ Auth:     None (public API)
 ✅ Status:   Live
 ✅ Protocol: MCP 1.0
 ```
