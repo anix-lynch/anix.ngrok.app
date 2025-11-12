@@ -39,13 +39,16 @@ https://anix.ngrok.app/mcp
 
 #### **Authentication:**
 ```
-None
+Bearer Token
 ```
-*(Select "None" from the dropdown - this is a public API)*
+
+**Token:** `YOUR_RESUME_AUTH_TOKEN` (from your `.env` file)
+
+*(This protects your master resume from public access!)*
 
 #### **Accept Risk:**
 - ☑️ Check: "I understand and want to continue"
-- Note: This is your own server, so it's safe!
+- Note: This is your own authenticated server, so it's safe!
 
 ---
 
@@ -99,20 +102,23 @@ Once connected, ChatGPT can use these tools:
 ## 🧪 Test Endpoints Manually
 
 ```bash
-# MCP metadata
-curl https://anix.ngrok.app/mcp | jq '.'
+# Set your auth token
+export TOKEN="YOUR_RESUME_AUTH_TOKEN"
 
-# Health check
+# Health check (no auth required)
 curl https://anix.ngrok.app/health
 
-# Full resume
-curl https://anix.ngrok.app/resume | jq '.'
+# MCP metadata (requires auth)
+curl -H "Authorization: Bearer $TOKEN" https://anix.ngrok.app/mcp | jq '.'
 
-# Skills only
-curl https://anix.ngrok.app/skills | jq '.'
+# Full resume (requires auth)
+curl -H "Authorization: Bearer $TOKEN" https://anix.ngrok.app/resume | jq '.'
 
-# Summary
-curl https://anix.ngrok.app/summary | jq '.'
+# Skills only (requires auth)
+curl -H "Authorization: Bearer $TOKEN" https://anix.ngrok.app/skills | jq '.'
+
+# Summary (requires auth)
+curl -H "Authorization: Bearer $TOKEN" https://anix.ngrok.app/summary | jq '.'
 ```
 
 ---
@@ -147,9 +153,10 @@ cd /Users/anixlynch/dev/anix.ngrok.app
 
 ### Authentication Issues?
 
-- Make sure you selected **"None"** (not "OAuth" or "API Key")
-- This is a public API with no authentication required
-- Accept the risk warning (it's your own server!)
+- Make sure you selected **"Bearer Token"** (not "None" or "OAuth")
+- Copy your token EXACTLY from `.env` file (`RESUME_AUTH_TOKEN`)
+- Test authentication manually: `curl -H "Authorization: Bearer YOUR_TOKEN" https://anix.ngrok.app/health`
+- If you get 401 Unauthorized, regenerate token: `openssl rand -hex 32`
 
 ---
 
@@ -185,7 +192,7 @@ To update the data ChatGPT sees:
 ```
 ✅ Server:   https://anix.ngrok.app
 ✅ MCP URL:  https://anix.ngrok.app/mcp
-✅ Auth:     None (public API)
+✅ Auth:     Bearer Token (private & secure)
 ✅ Status:   Live
 ✅ Protocol: MCP 1.0
 ```

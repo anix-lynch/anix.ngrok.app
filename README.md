@@ -15,7 +15,9 @@ cd anix.ngrok.app
 
 # 2. Set up environment
 cp .env.example .env
-# Edit .env and add your NGROK_AUTHTOKEN
+# Edit .env and add:
+#   - NGROK_AUTHTOKEN (from ngrok.com)
+#   - RESUME_AUTH_TOKEN (generate: openssl rand -hex 32)
 
 # 3. Install dependencies (none! Pure Python stdlib)
 # Optional: python3 -m venv venv && source venv/bin/activate
@@ -23,6 +25,35 @@ cp .env.example .env
 # 4. Start server + ngrok
 ./start.sh
 ```
+
+## 🔒 Authentication
+
+**All endpoints (except `/health`) are protected with Bearer token auth.**
+
+### Generate a secure token:
+```bash
+openssl rand -hex 32
+```
+
+### Add to `.env`:
+```bash
+RESUME_AUTH_TOKEN=your_generated_token_here
+```
+
+### Test with curl:
+```bash
+# Without auth (will fail)
+curl https://anix.ngrok.app/resume
+
+# With auth (will succeed)
+curl -H "Authorization: Bearer YOUR_TOKEN" https://anix.ngrok.app/resume
+```
+
+### For ChatGPT:
+When connecting in ChatGPT's Custom API settings:
+1. Authentication: **Bearer Token**
+2. Token: `YOUR_TOKEN` (from `.env`)
+3. All endpoints now private and secure!
 
 ---
 

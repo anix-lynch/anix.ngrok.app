@@ -7,12 +7,14 @@ Zero dependencies - Python stdlib only!
 
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import json
+import os
 from pathlib import Path
 from urllib.parse import urlparse
 
 # Configuration
 PORT = 8000
 RESUME_FILE = Path(__file__).parent / "resume.json"
+AUTH_TOKEN = os.getenv('RESUME_AUTH_TOKEN', 'change-me-in-production')  # Load from env
 
 
 def load_resume():
@@ -25,6 +27,26 @@ def load_resume():
 
 class ResumeHandler(BaseHTTPRequestHandler):
     """HTTP request handler for resume API."""
+    
+    def _check_auth(self):
+        """Check if request has valid bearer token."""
+        auth_header = self.headers.get('Authorization', '')
+        if auth_header.startswith('Bearer '):
+            token = auth_header[7:]  # Remove 'Bearer ' prefix
+            return token == AUTH_TOKEN
+        return False
+    
+    def _send_unauthorized(self):
+        """Send 401 Unauthorized response."""
+        self.send_response(401)
+        self.send_header('Content-type', 'application/json')
+        self.send_header('WWW-Authenticate', 'Bearer realm="Resume API"')
+        self.end_headers()
+        error = {
+            "error": "Unauthorized",
+            "message": "Valid bearer token required. Add header: Authorization: Bearer YOUR_TOKEN"
+        }
+        self.wfile.write(json.dumps(error, indent=2).encode('utf-8'))
     
     def do_HEAD(self):
         """Handle HEAD requests (for ngrok health checks)."""
@@ -41,14 +63,21 @@ class ResumeHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         """Handle GET requests."""
         path = urlparse(self.path).path
-        resume = load_resume()
         
-        # Health check
+        # Health check - no auth required
         if path == '/health':
             self._json_response({"status": "ok", "message": "Resume server running"})
             return
         
-        # HTML interface
+        # All endpoints except /health require auth
+        if path != '/health':
+            if not self._check_auth():
+                self._send_unauthorized()
+                return
+        
+        resume = load_resume()
+        
+        # HTML interface (protected)
         if path == '/':
             self._html_response(resume)
             return
@@ -177,6 +206,11 @@ class ResumeHandler(BaseHTTPRequestHandler):
         
         # MCP endpoint - handle JSON-RPC requests
         if path == '/mcp':
+            # Check auth for MCP endpoint
+            if not self._check_auth():
+                self._send_unauthorized()
+                return
+            
             try:
                 content_length = int(self.headers.get('Content-Length', 0))
                 body = self.rfile.read(content_length).decode('utf-8')
