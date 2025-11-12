@@ -162,8 +162,7 @@ class ResumeHandler(BaseHTTPRequestHandler):
                     "summary": "/summary"
                 },
                 "authentication": {
-                    "type": "none",
-                    "description": "Public API - no authentication required"
+                    "type": "none"
                 }
             }
             self._json_response(mcp_response)
