@@ -63,17 +63,23 @@ class ResumeHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         """Handle GET requests."""
         path = urlparse(self.path).path
+        query_params = dict(item.split('=') for item in urlparse(self.path).query.split('&') if '=' in item) if urlparse(self.path).query else {}
         
         # Health check - no auth required
         if path == '/health':
             self._json_response({"status": "ok", "message": "Resume server running"})
             return
         
-        # All endpoints except /health require auth
-        if path != '/health':
-            if not self._check_auth():
-                self._send_unauthorized()
-                return
+        # Check auth: Bearer token OR query param token for browser access
+        token_valid = False
+        if self._check_auth():
+            token_valid = True
+        elif query_params.get('token') == AUTH_TOKEN:
+            token_valid = True
+        
+        if path != '/health' and not token_valid:
+            self._send_unauthorized()
+            return
         
         resume = load_resume()
         
