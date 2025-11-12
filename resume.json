@@ -1,27 +1,182 @@
 {
   "name": "anixlynch",
   "title": "Data Engineer | ML Engineer | Business Analyst",
-  "location": "Remote",
-  "years_experience": "N/A",
+  "location": "Los Angeles, CA (Remote)",
+  "email": "alynch@gozeroshot.dev",
+  "years_experience": 5,
+  "summary": "Data engineer and ML practitioner specializing in building scalable data pipelines, ETL systems, and AI-powered applications. Experienced with modern data stack (Snowflake, dbt, DuckDB) and ML frameworks (LangChain, RAG, HuggingFace). Currently building 6 Northstar projects demonstrating end-to-end data engineering and ML capabilities.",
+  
   "skills": {
-    "tech": "Data pipelines, ETL, APIs",
-    "business": "Analysis, reporting, insights",
-    "languages": "Python, SQL, JavaScript"
+    "Python": 9,
+    "SQL": 9,
+    "JavaScript": 7,
+    "TypeScript": 7,
+    "Snowflake": 8,
+    "DuckDB": 8,
+    "BigQuery": 7,
+    "dbt": 8,
+    "Airflow": 7,
+    "FastAPI": 8,
+    "Flask": 7,
+    "Streamlit": 8,
+    "AWS": 7,
+    "GCP": 7,
+    "Docker": 7,
+    "Git": 9,
+    "Pandas": 9,
+    "NumPy": 8,
+    "LangChain": 8,
+    "RAG": 8,
+    "OpenAI": 8,
+    "HuggingFace": 7,
+    "MCP": 9,
+    "ngrok": 8,
+    "Qdrant": 7,
+    "Supabase": 6
   },
+  
+  "projects": [
+    {
+      "name": "Resume MCP",
+      "description": "AI-powered resume matching system using Model Context Protocol. Connects resume data to ChatGPT and other AI tools via ngrok.",
+      "tech": ["Python", "FastAPI", "MCP", "OpenAI", "ngrok", "JSON-RPC"],
+      "github": "https://github.com/anix-lynch/resume-mcp",
+      "live_url": "https://anix.ngrok.app",
+      "highlights": [
+        "Built MCP server with JSON-RPC protocol for ChatGPT integration",
+        "Zero-dependency HTTP server using pure Python stdlib",
+        "Real-time resume data access via public API"
+      ]
+    },
+    {
+      "name": "5 Miles Job Search",
+      "description": "Location-based job search with commute calculation using Google Maps API. Visualizes jobs and VC firms on interactive map.",
+      "tech": ["Python", "DuckDB", "Snowflake", "Streamlit", "Google Maps API", "Folium"],
+      "github": "https://github.com/anix-lynch/5miles-job-search",
+      "highlights": [
+        "Built ETL pipeline validating and enriching job data",
+        "Integrated DuckDB (local) and Snowflake (cloud) sync",
+        "Real-time commute scoring with transit API"
+      ]
+    },
+    {
+      "name": "Mocktailverse (AWS)",
+      "description": "Data pipeline for mocktail recipes using AWS free tier services.",
+      "tech": ["Python", "AWS S3", "Airflow", "Pandas"],
+      "highlights": [
+        "Self-hosted Airflow orchestration",
+        "S3 object storage (5GB free tier)",
+        "Automated data ingestion pipeline"
+      ]
+    },
+    {
+      "name": "Cocktailverse (GCP)",
+      "description": "Cocktail recipe analytics using GCP free tier services.",
+      "tech": ["Python", "BigQuery", "GCS", "dbt"],
+      "highlights": [
+        "BigQuery analytics (1TB/month free)",
+        "dbt transformations for data modeling",
+        "GCS storage integration"
+      ]
+    },
+    {
+      "name": "Dynamic Resume Agent",
+      "description": "LangChain-powered RAG system for intelligent resume Q&A.",
+      "tech": ["Python", "LangChain", "Qdrant", "OpenAI", "RAG"],
+      "highlights": [
+        "Vector database for semantic search",
+        "RAG pipeline for context-aware responses",
+        "Real-time resume insights"
+      ]
+    },
+    {
+      "name": "Marketing Analytics ETL",
+      "description": "End-to-end marketing data pipeline with ML predictions.",
+      "tech": ["Python", "DuckDB", "dbt", "Streamlit", "Vertex AI"],
+      "highlights": [
+        "dbt models for data transformation",
+        "DuckDB for local analytics",
+        "Vertex AI for ML predictions"
+      ]
+    }
+  ],
+  
+  "experience": [
+    {
+      "role": "Independent Data Engineer",
+      "company": "ZeroShot Brand (Northstar Projects)",
+      "duration": "2024-Present",
+      "location": "Remote",
+      "highlights": [
+        "Built 6 production-ready data engineering projects (Northstar suite)",
+        "Integrated multiple data stacks: AWS, GCP, Snowflake, DuckDB",
+        "Developed MCP servers for AI tool integration",
+        "Created end-to-end ETL pipelines with validation and enrichment",
+        "Deployed interactive dashboards with Streamlit",
+        "Implemented RAG systems with LangChain and vector databases"
+      ]
+    },
+    {
+      "role": "Data Analyst / Business Analyst",
+      "company": "Previous Experience",
+      "duration": "2019-2024",
+      "location": "Various",
+      "highlights": [
+        "Financial analysis and reporting",
+        "Business intelligence and insights",
+        "SQL data analysis and visualization",
+        "Cross-functional stakeholder management"
+      ]
+    }
+  ],
+  
+  "education": [
+    {
+      "degree": "Data Engineering & ML Self-Study",
+      "institution": "Self-Taught (Project-Based Learning)",
+      "year": "2023-2024",
+      "focus": ["Data Engineering", "ML Engineering", "Cloud Architecture", "API Development"]
+    }
+  ],
+  
+  "certifications": [
+    "Building with MCP (Model Context Protocol)",
+    "Google Maps Platform APIs",
+    "Snowflake Data Warehousing"
+  ],
+  
+  "languages": {
+    "English": "Native",
+    "Japanese": "Professional Working Proficiency"
+  },
+  
   "target_roles": {
     "primary": [
       "Data Engineer",
-      "ML Engineer",
-      "Data Analyst",
+      "ML Engineer", 
+      "Senior Data Analyst",
+      "Data Platform Engineer",
+      "Business Intelligence Engineer",
+      "Analytics Engineer"
+    ],
+    "secondary": [
       "Business Analyst",
       "Finance Analyst",
-      "Investment Analyst"
+      "Investment Analyst",
+      "Product Analyst"
     ],
     "japanese_roles": [
       "Japanese Customer Service/Support",
       "Japanese Business Analyst",
-      "Japanese Technical Support"
+      "Japanese Technical Support",
+      "Japanese-English Technical Translator"
     ]
+  },
+  
+  "preferences": {
+    "work_type": ["Remote", "Hybrid"],
+    "location": "Los Angeles area (within 1 hour commute)",
+    "company_size": ["Startup", "Scale-up", "Mid-size"],
+    "industries": ["Tech", "Finance", "VC/PE", "Data", "AI/ML"]
   }
 }
-
