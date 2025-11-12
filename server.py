@@ -29,7 +29,7 @@ class ResumeHandler(BaseHTTPRequestHandler):
     def do_HEAD(self):
         """Handle HEAD requests (for ngrok health checks)."""
         path = urlparse(self.path).path
-        if path in ['/', '/health', '/resume', '/skills', '/summary']:
+        if path in ['/', '/health', '/resume', '/skills', '/summary', '/mcp']:
             self.send_response(200)
             content_type = 'text/html; charset=utf-8' if path == '/' else 'application/json'
             self.send_header('Content-type', content_type)
@@ -76,6 +76,97 @@ class ResumeHandler(BaseHTTPRequestHandler):
                 "top_skills": list(resume.get('skills', {}).keys())[:10]
             }
             self._json_response(summary)
+            return
+        
+        # MCP endpoint (Model Context Protocol)
+        if path == '/mcp':
+            mcp_response = {
+                "protocol": "mcp",
+                "version": "1.0",
+                "server": {
+                    "name": "anix-resume-mcp",
+                    "version": "1.0.0",
+                    "description": "Resume data API for anixlynch - skills, target roles, and career information"
+                },
+                "capabilities": {
+                    "resources": True,
+                    "tools": True
+                },
+                "resources": [
+                    {
+                        "uri": "resume://full",
+                        "name": "Full Resume",
+                        "description": "Complete resume data including all fields",
+                        "mimeType": "application/json",
+                        "endpoint": "/resume"
+                    },
+                    {
+                        "uri": "resume://skills",
+                        "name": "Skills List",
+                        "description": "Technical and professional skills",
+                        "mimeType": "application/json",
+                        "endpoint": "/skills"
+                    },
+                    {
+                        "uri": "resume://summary",
+                        "name": "Resume Summary",
+                        "description": "Quick overview of key resume data",
+                        "mimeType": "application/json",
+                        "endpoint": "/summary"
+                    }
+                ],
+                "tools": [
+                    {
+                        "name": "get_resume",
+                        "description": "Get full resume data",
+                        "inputSchema": {
+                            "type": "object",
+                            "properties": {}
+                        }
+                    },
+                    {
+                        "name": "get_skills",
+                        "description": "Get skills list and proficiency levels",
+                        "inputSchema": {
+                            "type": "object",
+                            "properties": {}
+                        }
+                    },
+                    {
+                        "name": "get_target_roles",
+                        "description": "Get target job roles and positions",
+                        "inputSchema": {
+                            "type": "object",
+                            "properties": {}
+                        }
+                    },
+                    {
+                        "name": "search_skills",
+                        "description": "Search for specific skills",
+                        "inputSchema": {
+                            "type": "object",
+                            "properties": {
+                                "query": {
+                                    "type": "string",
+                                    "description": "Skill name to search for"
+                                }
+                            },
+                            "required": ["query"]
+                        }
+                    }
+                ],
+                "endpoints": {
+                    "health": "/health",
+                    "resume": "/resume",
+                    "skills": "/skills",
+                    "summary": "/summary"
+                },
+                "authentication": {
+                    "type": "none",
+                    "description": "Public API - no authentication required"
+                }
+            }
+            self._json_response(mcp_response)
             return
         
         # 404 for everything else
