@@ -1,0 +1,27 @@
+{
+  "name": "anixlynch",
+  "title": "Data Engineer | ML Engineer | Business Analyst",
+  "location": "Remote",
+  "years_experience": "N/A",
+  "skills": {
+    "tech": "Data pipelines, ETL, APIs",
+    "business": "Analysis, reporting, insights",
+    "languages": "Python, SQL, JavaScript"
+  },
+  "target_roles": {
+    "primary": [
+      "Data Engineer",
+      "ML Engineer",
+      "Data Analyst",
+      "Business Analyst",
+      "Finance Analyst",
+      "Investment Analyst"
+    ],
+    "japanese_roles": [
+      "Japanese Customer Service/Support",
+      "Japanese Business Analyst",
+      "Japanese Technical Support"
+    ]
+  }
+}
+
