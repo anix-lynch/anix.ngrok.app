@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  job-automation:
+    build: .
+    container_name: ats-automation
+    volumes:
+      # Mount current directory to /app in container
+      - .:/app
+      # Mount output directory for results
+      - ./output:/app/output
+    environment:
+      - RESUME_URL=https://anix.ngrok.app/resume
+    working_dir: /app
+    stdin_open: true
+    tty: true
+    command: /bin/bash
