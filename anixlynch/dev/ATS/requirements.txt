@@ -1,0 +1,34 @@
+# Job Application Automation System
+# Python 3.11+
+
+# Browser automation
+playwright==1.40.0
+playwright-stealth==1.0.1
+
+# Web scraping
+beautifulsoup4==4.12.2
+lxml==4.9.3
+requests==2.31.0
+
+# AI/ML (for embeddings and job matching)
+openai==1.3.0
+anthropic==0.8.0
+sentence-transformers==2.2.2  # For local embeddings
+
+# Data processing
+pandas==2.1.3
+numpy==1.26.2
+
+# CLI and utilities
+click==8.1.7
+python-dotenv==1.0.0
+tqdm==4.66.1
+
+# Database
+sqlite3  # Built-in
+
+# Optional: Proxy support
+requests[socks]==2.31.0
+
+# Optional: Better logging
+colorlog==6.8.0
