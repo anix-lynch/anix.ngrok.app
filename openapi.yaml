@@ -1,0 +1,96 @@
+openapi: 3.0.0
+info:
+  title: Simple Resume MCP
+  version: 1.0.0
+  description: |
+    Minimal MCP server that serves Anix Lynch's resume.json to ChatGPT.
+    No job matching - just resume data.
+
+servers:
+  - url: https://anix.ngrok.app
+    description: Production ngrok endpoint
+
+paths:
+  /mcp:
+    get:
+      operationId: healthCheck
+      summary: Health check
+      responses:
+        '200':
+          description: Server info
+    
+    post:
+      operationId: callMCP
+      summary: Call MCP method
+      description: |
+        Execute MCP protocol methods:
+        - initialize: Handshake
+        - tools/list: Get available tools
+        - tools/call: Execute a tool
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - jsonrpc
+                - method
+              properties:
+                jsonrpc:
+                  type: string
+                  enum: ["2.0"]
+                id:
+                  type: integer
+                method:
+                  type: string
+                  enum: [initialize, tools/list, tools/call]
+                params:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: Tool name
+                      enum:
+                        - get_resume
+                        - get_skills
+                        - get_projects
+                        - get_experience
+                    arguments:
+                      type: object
+            examples:
+              list_tools:
+                summary: List all tools
+                value:
+                  jsonrpc: "2.0"
+                  id: 1
+                  method: "tools/list"
+              
+              get_resume:
+                summary: Get full resume
+                value:
+                  jsonrpc: "2.0"
+                  id: 2
+                  method: "tools/call"
+                  params:
+                    name: "get_resume"
+                    arguments: {}
+              
+              get_skills:
+                summary: Get skills (min weight 7)
+                value:
+                  jsonrpc: "2.0"
+                  id: 3
+                  method: "tools/call"
+                  params:
+                    name: "get_skills"
+                    arguments:
+                      min_weight: 7
+      
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object

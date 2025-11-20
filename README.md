@@ -1,234 +1,187 @@
 # anix.ngrok.app
 
-**Live Resume API** - Simple HTTP server exposing resume data via ngrok.
+**Simple MCP Resume Server** - Expose your resume.json to ChatGPT via ngrok
 
 🔗 **Live URL:** https://anix.ngrok.app
 
----
+## 🎯 What This Does
+
+Serves your `resume.json` to ChatGPT as an MCP (Model Context Protocol) server so ChatGPT can:
+- Read your full resume
+- Query your skills
+- List your projects
+- View your experience
+
+**Zero complexity** - just FastAPI + resume.json + ngrok.
 
 ## 🚀 Quick Start
 
 ```bash
-# 1. Clone repo
-git clone https://github.com/anixlynch/anix.ngrok.app.git
+# 1. Clone
+git clone https://github.com/anix-lynch/anix.ngrok.app.git
 cd anix.ngrok.app
 
 # 2. Set up environment
 cp .env.example .env
-# Edit .env and add:
-#   - NGROK_AUTHTOKEN (from ngrok.com)
-#   - RESUME_AUTH_TOKEN (generate: openssl rand -hex 32)
+# Edit .env and add your NGROK_AUTHTOKEN from ngrok.com
 
-# 3. Install dependencies (none! Pure Python stdlib)
-# Optional: python3 -m venv venv && source venv/bin/activate
+# 3. Install dependencies
+pip install -r requirements.txt
 
-# 4. Start server + ngrok
+# 4. Update your resume
+# Edit resume.json with your info
+
+# 5. Start server + ngrok
 ./start.sh
 ```
 
-## 🔒 Authentication
-
-**All endpoints (except `/health`) are protected with Bearer token auth.**
-
-### Generate a secure token:
-```bash
-openssl rand -hex 32
-```
-
-### Add to `.env`:
-```bash
-RESUME_AUTH_TOKEN=your_generated_token_here
-```
-
-### Test with curl:
-```bash
-# Without auth (will fail)
-curl https://anix.ngrok.app/resume
-
-# With auth (will succeed)
-curl -H "Authorization: Bearer YOUR_TOKEN" https://anix.ngrok.app/resume
-```
-
-### For ChatGPT:
-When connecting in ChatGPT's Custom API settings:
-1. Authentication: **Bearer Token**
-2. Token: `YOUR_TOKEN` (from `.env`)
-3. All endpoints now private and secure!
-
----
-
-## 📁 What's Inside
+## 📁 Files
 
 ```
 anix.ngrok.app/
-├── server.py           # Simple HTTP server (pure Python)
-├── resume.json         # Your resume data
-├── start.sh            # Start server + ngrok
-├── stop.sh             # Stop all processes
-├── .env.example        # Environment template
-├── .gitignore          # Don't commit secrets!
-└── README.md           # This file
+├── server.py          # FastAPI MCP server (180 lines)
+├── resume.json        # Your resume data
+├── openapi.yaml       # OpenAPI schema for ChatGPT
+├── requirements.txt   # FastAPI + uvicorn
+├── start.sh          # Start server + ngrok
+├── stop.sh           # Stop all processes
+├── .env.example      # Environment template
+└── README.md         # This file
 ```
 
----
+## 🔌 MCP Tools
 
-## 🔌 API Endpoints
+The server exposes these tools to ChatGPT:
 
-| Endpoint | Description |
-|----------|-------------|
-| `GET /` | Beautiful HTML resume interface |
-| `GET /health` | Health check (returns `{"status": "ok"}`) |
-| `GET /resume` | Full resume JSON |
-| `GET /skills` | Skills list JSON |
-| `GET /summary` | Resume summary JSON |
+- **`get_resume`** - Get full resume
+- **`get_skills`** - Get skills (with optional min_weight filter)
+- **`get_projects`** - Get portfolio projects
+- **`get_experience`** - Get work experience
 
----
-
-## 🛠️ Manual Setup
-
-### 1. Get ngrok Auth Token
-
-```bash
-# Sign up: https://dashboard.ngrok.com/signup
-# Get token: https://dashboard.ngrok.com/get-started/your-authtoken
-
-# Configure ngrok
-ngrok config add-authtoken YOUR_TOKEN_HERE
-```
-
-### 2. Reserve Domain (Optional)
-
-```bash
-# Go to: https://dashboard.ngrok.com/domains
-# Reserve: anix.ngrok.app (free tier: 1 static domain)
-```
-
-### 3. Update Resume Data
-
-Edit `resume.json` with your information:
-```json
-{
-  "name": "Your Name",
-  "title": "Your Title",
-  "location": "Your Location",
-  "skills": {
-    "Python": 5,
-    "JavaScript": 4
-  },
-  "target_roles": {
-    "primary": ["Data Engineer", "ML Engineer"]
-  }
-}
-```
-
----
-
-## 🚦 Usage
+## 🛠️ Usage
 
 ### Start Everything
-
 ```bash
 ./start.sh
-# Starts server on port 8000
-# Starts ngrok tunnel to anix.ngrok.app
 ```
 
-### Stop Everything
+This will:
+1. Start FastAPI server on port 8000
+2. Start ngrok tunnel to https://anix.ngrok.app
+3. Server logs go to `server.log`
+4. Ngrok logs go to `ngrok.log`
 
+### Stop Everything
 ```bash
 ./stop.sh
-# Kills server and ngrok processes
 ```
 
 ### Check Status
-
 ```bash
-# Check if running
-pgrep -fl "python.*server.py"
-pgrep -fl ngrok
+# Check if server is running
+curl http://localhost:8000
 
-# Test locally
-curl http://localhost:8000/health
+# Check ngrok tunnel
+curl https://anix.ngrok.app/mcp
 
-# Test public
-curl https://anix.ngrok.app/health
+# Test a tool
+curl -X POST https://anix.ngrok.app/mcp \
+  -H "Content-Type: application/json" \
+  -d '{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "tools/call",
+    "params": {
+      "name": "get_resume",
+      "arguments": {}
+    }
+  }'
 ```
 
----
+## 🤖 ChatGPT Integration
 
-## 🔒 Environment Variables
+1. Go to ChatGPT → **My GPTs** → **Create a GPT**
+2. **Configure** → **Create new action**
+3. **Import from URL** or paste the content of `openapi.yaml`
+4. The server URL is already set to `https://anix.ngrok.app`
+5. **Authentication:** None (or API Key if you add auth)
+6. **Test** the actions
 
-Required in `.env`:
+Now ChatGPT can read your resume!
+
+## 🔧 Environment Variables
+
+Create `.env` from `.env.example`:
 
 ```bash
+# Required
 NGROK_AUTHTOKEN=your_ngrok_token_here
-NGROK_DOMAIN=anix.ngrok.app
-SERVER_PORT=8000
-```
 
----
+# Optional (if you reserved a domain)
+NGROK_DOMAIN=anix.ngrok.app
+```
 
 ## 📊 Tech Stack
 
-- **Server:** Python 3 (stdlib only - no dependencies!)
-- **Tunnel:** ngrok (free tier)
-- **Data:** JSON
-- **Deployment:** Any machine with Python 3
+- **FastAPI** - Modern Python web framework
+- **Uvicorn** - ASGI server
+- **ngrok** - Secure tunnel to localhost
+- **MCP Protocol** - Model Context Protocol (JSON-RPC 2.0)
 
----
+## ✅ Features
 
-## 🎯 Features
+- ✅ **Zero dependencies** (except FastAPI + uvicorn)
+- ✅ **No modification to resume.json** - use it as-is
+- ✅ **Instant responses** - no timeouts
+- ✅ **MCP compliant** - works with ChatGPT
+- ✅ **OpenAPI schema** - for easy integration
+- ✅ **Simple deployment** - just run `./start.sh`
 
-✅ **Zero Dependencies** - Pure Python standard library  
-✅ **Clean Design** - No emojis, no broken encoding  
-✅ **Fast Startup** - < 5 seconds to live  
-✅ **Multiple Formats** - JSON API + HTML interface  
-✅ **Easy Resume Updates** - Just edit `resume.json`  
-✅ **Portable** - Runs anywhere Python 3 exists  
+## 🔒 Security Note
 
----
+This is a **public demo** setup with no authentication. For production:
+1. Add Bearer token auth
+2. Use environment variables for secrets
+3. Add rate limiting
+4. Enable HTTPS only
+
+## 📝 Updating Your Resume
+
+Just edit `resume.json` and restart:
+
+```bash
+./stop.sh
+./start.sh
+```
+
+ChatGPT will see the updated data immediately.
 
 ## 🔧 Troubleshooting
 
 ### Port Already in Use
-
 ```bash
-# Kill process on port 8000
 lsof -ti:8000 | xargs kill -9
-
-# Or use stop.sh
-./stop.sh
 ```
 
-### ngrok ERR_NGROK_3200 (Offline)
+### ngrok ERR_NGROK_3200
+Your ngrok tunnel is offline. Check:
+- Is `NGROK_AUTHTOKEN` set in `.env`?
+- Is ngrok running? Check `ngrok.log`
+- Try: `ngrok http 8000 --authtoken YOUR_TOKEN`
 
+### Server Not Starting
 ```bash
-# Restart ngrok
-pkill ngrok
-ngrok http --domain=anix.ngrok.app 8000 &
+# Check logs
+tail -f server.log
+
+# Check if FastAPI is installed
+pip install -r requirements.txt
 ```
 
-### Authentication Failed
+## 📄 License
 
-```bash
-# Re-authenticate
-source .env
-ngrok config add-authtoken $NGROK_AUTHTOKEN
-```
-
----
-
-## 📝 License
-
-MIT - Do whatever you want with it!
-
----
+MIT
 
 ## 🤝 Contributing
 
-This is a personal resume server, but feel free to fork and adapt for your own use!
-
----
-
-**Built by anixlynch** | [GitHub](https://github.com/anixlynch) | [Live Resume](https://anix.ngrok.app)
-
+PRs welcome! Keep it simple.
