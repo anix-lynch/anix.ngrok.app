@@ -180,6 +180,14 @@ async def mcp_endpoint(request: Request):
         }
     })
 
+@app.get("/resume")
+async def get_resume_json():
+    """Serve raw resume JSON for Perplexity / Web Browsers."""
+    resume = load_resume()
+    if not resume:
+        return JSONResponse({"error": "Resume not found"}, status_code=404)
+    return JSONResponse(resume)
+
 if __name__ == "__main__":
     import uvicorn
     print("🚀 Starting Simple Resume MCP Server on http://localhost:8000")
