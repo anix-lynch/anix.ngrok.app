@@ -52,7 +52,7 @@ paths:
                       type: string
                       description: Tool name
                       enum:
-                        - get_resume
+                        - get_resume_info
                         - get_skills
                         - get_projects
                         - get_experience
@@ -66,14 +66,14 @@ paths:
                   id: 1
                   method: "tools/list"
               
-              get_resume:
+              get_resume_info:
                 summary: Get full resume
                 value:
                   jsonrpc: "2.0"
                   id: 2
                   method: "tools/call"
                   params:
-                    name: "get_resume"
+                    name: "get_resume_info"
                     arguments: {}
               
               get_skills:

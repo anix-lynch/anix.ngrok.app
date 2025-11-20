@@ -74,7 +74,7 @@ async def mcp_endpoint(request: Request):
             "result": {
                 "tools": [
                     {
-                        "name": "get_resume",
+                        "name": "get_resume_info",
                         "description": "Get Anix Lynch's complete resume including skills, projects, experience, and contact info",
                         "inputSchema": {
                             "type": "object",
@@ -133,7 +133,7 @@ async def mcp_endpoint(request: Request):
             })
         
         # Handle different tools
-        if tool_name == "get_resume":
+        if tool_name == "get_resume_info":
             result = resume
         
         elif tool_name == "get_skills":
