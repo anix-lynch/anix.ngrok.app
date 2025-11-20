@@ -124,10 +124,5 @@
     "AI Agent Developer",
     "Data Engineering Lead"
   ],
-  "target_rate_range": {
-    "min": 70,
-    "max": 200,
-    "currency": "USD",
-    "unit": "hour"
-  }
+  "section_count": 8
 }
