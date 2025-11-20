@@ -81,7 +81,58 @@ anix.ngrok.app/
 
 ## 📝 Updating Your Resume
 
-Just edit `resume.json` and restart:
+Edit `resume.json` directly:
 ```bash
-./stop.sh && ./start.sh
+nano resume.json
 ```
+
+Changes are served live at `https://anix.ngrok.app/resume`
+
+**No restart needed** - server auto-reads the file on each request.
+
+---
+
+## 🔧 Setup & Troubleshooting Log
+
+### Current Setup (Nov 20, 2025)
+
+**Problem:** ngrok tunnel kept failing, needed permanent solution
+
+**Solution Implemented:**
+1. **Created ngrok config** at `~/.ngrok2/ngrok.yml` with reserved domain `anix.ngrok.app`
+2. **Set up launchd auto-start** at `~/Library/LaunchAgents/com.anix.ngrok-resume.plist`
+3. **Service now:**
+   - ✅ Auto-starts on Mac boot
+   - ✅ Auto-restarts if crashes
+   - ✅ Keeps tunnel alive 24/7
+   - ✅ No manual `./start.sh` needed
+
+**Verify it's working:**
+```bash
+# Check service status
+launchctl list | grep ngrok
+
+# View logs
+tail -f /tmp/ngrok-resume.log
+tail -f /tmp/ngrok-resume-error.log
+
+# Test endpoints
+curl https://anix.ngrok.app/            # Status
+curl https://anix.ngrok.app/resume      # Resume JSON
+curl https://anix.ngrok.app/mcp         # MCP capabilities
+```
+
+**If it breaks:**
+```bash
+# Restart service
+launchctl unload ~/Library/LaunchAgents/com.anix.ngrok-resume.plist
+launchctl load ~/Library/LaunchAgents/com.anix.ngrok-resume.plist
+
+# Check if processes are running
+ps aux | grep -E "(uvicorn|ngrok)" | grep -v grep
+```
+
+### Endpoints
+- `https://anix.ngrok.app/` - Health check
+- `https://anix.ngrok.app/resume` - Raw resume JSON (Perplexity, browsing)
+- `https://anix.ngrok.app/mcp` - MCP endpoint (ChatGPT SDK tool calling)

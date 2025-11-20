@@ -31,25 +31,46 @@
     {
       "name": "Smoothieverse",
       "description": "ETL pipeline system with DuckDB + dbt + Supabase for real-time data processing",
-      "tech": ["Python", "DuckDB", "dbt", "Supabase", "ETL"],
+      "tech": [
+        "Python",
+        "DuckDB",
+        "dbt",
+        "Supabase",
+        "ETL"
+      ],
       "weight": 9
     },
     {
       "name": "Cocktailverse",
       "description": "GCP ML pipeline for predictive analytics and automated decision making",
-      "tech": ["Python", "Google Cloud", "Vertex AI", "ML Pipelines"],
+      "tech": [
+        "Python",
+        "Google Cloud",
+        "Vertex AI",
+        "ML Pipelines"
+      ],
       "weight": 9
     },
     {
       "name": "Boss Baby AI",
       "description": "Multi-agent AI system with personality-driven responses and memory",
-      "tech": ["Python", "FastAPI", "LangChain", "MCP", "AI Agents"],
+      "tech": [
+        "Python",
+        "FastAPI",
+        "LangChain",
+        "MCP",
+        "AI Agents"
+      ],
       "weight": 10
     },
     {
       "name": "Bangkok Beta",
       "description": "National VC accelerator program managing $10M+ in startup investments",
-      "tech": ["Venture Capital", "Startup Strategy", "Portfolio Management"],
+      "tech": [
+        "Venture Capital",
+        "Startup Strategy",
+        "Portfolio Management"
+      ],
       "weight": 8
     }
   ],
@@ -58,19 +79,36 @@
       "company": "ZeroShot Studio",
       "title": "AI Architect & Automation Strategist",
       "duration": "2023-Present",
-      "keywords": ["AI", "ML", "Automation", "Multi-agent Systems", "LangChain", "FastAPI"]
+      "keywords": [
+        "AI",
+        "ML",
+        "Automation",
+        "Multi-agent Systems",
+        "LangChain",
+        "FastAPI"
+      ]
     },
     {
       "company": "Venture Capital & Family Office",
       "title": "Investment Principal",
       "duration": "2020-2022",
-      "keywords": ["Venture Capital", "Startup Strategy", "Portfolio Management", "Investment"]
+      "keywords": [
+        "Venture Capital",
+        "Startup Strategy",
+        "Portfolio Management",
+        "Investment"
+      ]
     },
     {
       "company": "BlackRock",
       "title": "Private Equity - Japan Real Estate Fund",
       "duration": "2018-2019",
-      "keywords": ["Private Equity", "Real Estate", "Investment", "Cross-border"]
+      "keywords": [
+        "Private Equity",
+        "Real Estate",
+        "Investment",
+        "Cross-border"
+      ]
     }
   ],
   "certifications": [
@@ -93,4 +131,3 @@
     "unit": "hour"
   }
 }
-
